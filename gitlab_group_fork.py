@@ -110,7 +110,7 @@ def create_dest_group(glab, dest, src_group_tree):
     dest_group_tree = Tree()
     logging.info('Attempting to create destination group at %s/%s', glab.url, dest)
     try:
-        top_level_group = glab.groups.create({'name': dest, 'path': dest})
+        top_level_group = glab.groups.create({'name': dest, 'path': dest}, visibility="public")
         logging.info('Group Created at %s/%s', glab.url, top_level_group.full_path)
         dest_group_tree = add_new_group(top_level_group) # For root node
         src_group_tree.update_node(src_group_tree.root, data=GitLabInfo(new_id=top_level_group.id))
